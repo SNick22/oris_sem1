@@ -1,0 +1,22 @@
+{% set title = 'Избранное' %}
+
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="my-container profile-container">
+    <div class="favorites">
+        <h4>Избранное</h4>
+        <div class="products">
+            {% for product in products %}
+            <a href="/product/{{ product[1] }}" class="card" style="width: 230px; height: fit-content">
+                <img class="card-img-top" src="/static/img/{{ product[5] }}" height="300px" alt="Card image cap">
+                <div class="card-body">
+                    <p class="card-text orange">{{ product[4] }} ₽</p>
+                    <h5 class="card-title black">{{ product[3] }}</h5>
+                </div>
+            </a>
+            {% endfor %}
+        </div>
+    </div>
+</div>
+{% endblock %}

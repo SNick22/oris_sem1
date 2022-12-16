@@ -1,0 +1,43 @@
+{% set title = product[2] %}
+
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="my-container">
+    <nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="/">Главная</a></li>
+            <li class="breadcrumb-item"><a href="/category/{{ product[1] }}">{{ product[6] }}</a></li>
+        </ol>
+    </nav>
+    <div class="product">
+        <img src="/static/img/{{ product[4] }}" height="600px" width="500px" alt="Card image cap">
+        <div>
+            <h3>{{ product[2] }}</h3>
+            <h4>{{ product[3] }} ₽</h4>
+            <div class="product-buttons">
+                <button class="btn btn-dark" onclick="cart({{ product[0] }})">В корзину</button>
+                {% if is_favorite %}
+                <button class="to-favorites favorites-added" onclick="favorites(this, {{ product[0] }})">
+                    <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" viewBox="0 0 206.333 206.333" width="20px" height="20px" fill="currentColor" xml:space="preserve">
+                        <path d="M206.333,76.952c0,25.365-13.967,46.069-42.7,63.297c-36.253,21.737-54.063,47.905-54.239,48.167
+                            c-1.393,2.076-3.729,3.321-6.228,3.321c-2.497,0-4.83-1.243-6.223-3.314C96.671,188.02,78.66,161.81,42.7,140.249
+                            C13.967,123.021,0,102.316,0,76.952c0-30.228,19.701-62.354,56.211-62.354c24.457,0,39.282,10.829,46.956,18.941
+                            c7.674-8.113,22.499-18.941,46.956-18.941C186.633,14.597,206.333,46.724,206.333,76.952z"/>
+                    </svg>
+                </button>
+                {% else %}
+                <button class="to-favorites" onclick="favorites(this, {{ product[0] }})">
+                    <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" viewBox="0 0 206.333 206.333" width="20px" height="20px" fill="currentColor" xml:space="preserve">
+                        <path d="M206.333,76.952c0,25.365-13.967,46.069-42.7,63.297c-36.253,21.737-54.063,47.905-54.239,48.167
+                            c-1.393,2.076-3.729,3.321-6.228,3.321c-2.497,0-4.83-1.243-6.223-3.314C96.671,188.02,78.66,161.81,42.7,140.249
+                            C13.967,123.021,0,102.316,0,76.952c0-30.228,19.701-62.354,56.211-62.354c24.457,0,39.282,10.829,46.956,18.941
+                            c7.674-8.113,22.499-18.941,46.956-18.941C186.633,14.597,206.333,46.724,206.333,76.952z"/>
+                    </svg>
+                </button>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

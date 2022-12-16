@@ -1,0 +1,26 @@
+{% set title = 'Войти' %}
+
+{% extends 'auth.html' %}
+
+{% block content %}
+<div class="auth">
+  <a href="" class="logo">katyabest</a>
+  <form method="post">
+    <div class="mb-3">
+      <label for="exampleInputEmail1" class="form-label">Логин</label>
+      <input name="login" type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" required>
+    </div>
+    <div class="mb-3">
+      <label for="exampleInputPassword1" class="form-label">Пароль</label>
+      <input name="password" type="password" class="form-control" id="exampleInputPassword1" required>
+    </div>
+    <button type="submit" class="btn btn-dark">Войти</button>
+    <p>Нет аккаунта? <a href="/register">Зарегистрируйтесь</a></p>
+  </form>
+    {% with message = get_flashed_messages() %}
+    {% if message %}
+        <h5 style="color: #f93c00">{{ message[0] }}</h5>
+    {% endif %}
+    {% endwith %}
+</div>
+{% endblock %}

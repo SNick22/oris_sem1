@@ -1,0 +1,37 @@
+<div class="header__top-block">
+    <div class="my-container">
+        <p class="small white">г. Казань</p>
+    </div>
+</div>
+<header>
+    <div class="my-container">
+        <div class="header-top">
+            <div></div>
+            <a href="/" class="logo">katyabest</a>
+            <ul class="header-nav">
+                {% if user %}
+                    <li><a href="/logout">Выйти</a></li>
+                    {% if user.is_admin() %}
+                    <li><a href="/create-product">Добавить товар</a></li>
+                    {% endif %}
+                    <li><a href="/profile">Профиль</a></li>
+                    <li><a href="/favorites">Избранное</a></li>
+                {% else %}
+                    <li><a href="/login">Войти</a></li>
+                {% endif %}
+                <li><a href="/cart">Корзина</a></li>
+            </ul>
+        </div>
+        <div class="header-bottom">
+            <ul class="categories">
+                {% for category in categories %}
+                {% if category[0] == current_category %}
+                <li class="active-category"><a href="/category/{{ category[0] }}">{{ category[1] }}</a></li>
+                {% else %}
+                <li><a href="/category/{{ category[0] }}">{{ category[1] }}</a></li>
+                {% endif %}
+                {% endfor %}
+            </ul>
+        </div>
+    </div>
+</header>
